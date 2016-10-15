@@ -15,7 +15,7 @@
                           </div>
                           <div class="panel-body progress-panel">
  <table class="table table-hover personal-task">
-  <th> Sl No</<th><th> Sl No</<th><th> Category Name</<th><th> Create Date</<th><th> Action</<th>
+
                               <tbody>
                               <tr>
                                   <td>Today</td>
@@ -35,18 +35,27 @@
 
 
         <table class="table table-hover personal-task">
-            <th> Sl No</<th><th> <strong> Name</strong></<th><th>Action</th>
+            <th> Sl No</th>
+            <th> Job Title</th>
+            <th>company_name</th>
+            <th>qualification</th>
+             <th>Location</th>
+              <th>Category</th>
+              <th>interview Date</th>
+               <th>image</th>
+                <th>Job type</th>
             <?php
             $i = 1;
             foreach ($data as $key => $values) {
                 # code...echo 
+               
                 ?>
                 <tr>
                     <td >
                         <?php echo $i; ?>
                     </td>
                     <td >
-                        <span class="badge bg-important"><img src="uploads/<?php echo base_url(base64_decode($values->discription_image)); ?>"></span>
+                        <span class="badge bg-important"><img src="<?php echo base_url("uploads/".$values->discription_image); ?>"></span>
                     </td>
                     <td>
                         <a href="#">

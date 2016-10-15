@@ -164,7 +164,7 @@
                       </a>
                       <ul class="sub">
                           <li><a class="" href="<?php echo base_url('JobController/postNewJobs');?>">Add New</a></li>
-                          <li><a class="" href="buttons.html">List</a></li>
+                          <li><a class="" href="<?php echo base_url('JobController/ListJobs');?>">List</a></li>
                           
                       </ul>
                   </li>

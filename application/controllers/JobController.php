@@ -20,7 +20,8 @@ class JobController extends CI_Controller {
 
     public function ListJobCategory() {
         $this->load->view('NiceAdmin/header');
-        $this->load->view('NiceAdmin/listJobCategory');
+        $data['category'] = $this->model->getCategory();
+        $this->load->view('NiceAdmin/listJobCategory',$data);
         //$this->load->view('NiceAdmin/footer');
     }
 
@@ -49,12 +50,12 @@ class JobController extends CI_Controller {
         $qual = strtolower($qualification);
         $checkAlreadyExist = $this->qualificationExist($qual);
         if ($checkAlreadyExist) {
-            $data="Already Exist";
+            $data = "Already Exist";
         } else {
-           $save=$this->model->saveQuals($qual);
-              $data="Successfully Added";  
+            $save = $this->model->saveQuals($qual);
+            $data = "Successfully Added";
         }
-       echo json_encode($data);
+        echo json_encode($data);
     }
 
     public function qualificationExist($qual) {
@@ -80,6 +81,8 @@ class JobController extends CI_Controller {
     public function SaveJob() {
         $data = $this->get_data_from_post();
         $this->model->saveJob($data);
+        $this->session->set_flashdata('message', 'This is a message.');
+        $this->postNewJobs();
     }
 
     function get_data_from_post() {

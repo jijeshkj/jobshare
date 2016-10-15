@@ -16,6 +16,9 @@
             </div>
         </div> 
         <!-- Title -->
+        <div class="alert-success">
+        <?php echo $this->session->flashdata('message');?>
+        <?php echo "here";?></div>
         <div class="form-group">
 
             <label class="control-label col-lg-4" for="title">&nbsp</label>
@@ -151,7 +154,7 @@
 
 </div>
 
-<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/  jquery-ui.css">       
+<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/jquery-ui.css">       
 <script src="<?php echo base_url(); ?>assets/js/jquery-1.12.4.js"></script>
 <script src="<?php echo base_url(); ?>assets/js/jquery-ui.js"></script>
 <script>

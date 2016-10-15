@@ -67,7 +67,7 @@
                     <button type="buttton" class="btn-success"  id="addqualification" >Add New</button></td>
             </tr>
         </table>
-    </div><div class="col-lg-1"></div>
+    </div><div class="col-lg-1"></div></section>
     <div class="panel-body progress-panel col-lg-4"><h3>Job Locations Listed </h3>
         <table class="table table-hover personal-task"> <span class="glyphicon glyphicon-remove " style="color:red"></span> 
             <th> Sl No</<th><th> <strong> Name</strong></<th><th>Action</th>
