@@ -19,9 +19,9 @@ class Welcome extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->view('NiceAdmin/header');
-		$this->load->view('NiceAdmin/index');
-		$this->load->view('NiceAdmin/footer');
+		//$this->load->view('NiceAdmin/header');
+		$this->load->view('NiceAdmin/login');
+		//$this->load->view('NiceAdmin/footer');
 	}
 }
 

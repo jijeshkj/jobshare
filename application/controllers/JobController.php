@@ -12,6 +12,17 @@ class JobController extends CI_Controller {
         $this->load->database();
     }
 
+    public function login() {
+      //  $this->load->view('NiceAdmin/header');
+        $this->load->view('NiceAdmin/login');
+    }
+
+    public function index() {
+        $this->load->view('NiceAdmin/header');
+        $this->load->view('NiceAdmin/index');
+        $this->load->view('NiceAdmin/footer');
+    }
+
     public function CreateJobCategory() {
         $this->load->view('NiceAdmin/header');
         $this->load->view('NiceAdmin/createJobCategory');
@@ -21,7 +32,7 @@ class JobController extends CI_Controller {
     public function ListJobCategory() {
         $this->load->view('NiceAdmin/header');
         $data['category'] = $this->model->getCategory();
-        $this->load->view('NiceAdmin/listJobCategory',$data);
+        $this->load->view('NiceAdmin/listJobCategory', $data);
         //$this->load->view('NiceAdmin/footer');
     }
 
@@ -50,7 +61,7 @@ class JobController extends CI_Controller {
         $qual = strtolower($qualification);
         $checkAlreadyExist = $this->qualificationExist($qual);
         if ($checkAlreadyExist) {
-            $data = "Already Exist";
+            $data = "<div class='alert-danger' >Already Exist</div>";
         } else {
             $save = $this->model->saveQuals($qual);
             $data = "Successfully Added";
@@ -64,19 +75,39 @@ class JobController extends CI_Controller {
         return $data;
     }
 
+    public function updateQuals() {
+        $qualification = $this->input->post('qualification');
+        $id = $this->input->post('id');
+        $qual = strtolower($qualification);
+        $checkAlreadyExist = $this->qualificationExist($qual);
+        if ($checkAlreadyExist) {
+            $data = "Already Exist";
+        } else {
+            $save = $this->model->updateQuals($qual, $id);
+            $data = "Successfully Updated";
+        }
+        echo json_encode($data);
+    }
+
     public function saveLocation() {
         $var = $this->input->post('location');
-
         $this->model->saveLocation($var);
     }
 
-    public function delteData() {
-        $this->load->model();
+    public function deleteQuals() {
+        $id = $this->input->post('id');
+        $this->model->deleteQualification($id);
+        $data = "Successfully Deleted";
+        echo json_encode($data);
     }
 
-    public function SaveJobs() {
-        $this->load->formValidation();
-    }
+//    public function delteData() {
+//        $this->load->model();
+//    }
+//
+//    public function SaveJobs() {
+//        $this->load->formValidation();
+//    }
 
     public function SaveJob() {
         $data = $this->get_data_from_post();

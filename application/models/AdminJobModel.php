@@ -46,7 +46,13 @@ class AdminJobModel extends CI_Model {
     }
 
     function viewjob() {
-        return $this->db->get('jobshare_jobs')->result();
+        $this->db->select('jj.id, jj.job_title, jj.company_name,jj.interview_date,jj.discription_image,jj.job_type,jl.location_name,jc.category_name,jq.quals_name');
+        $this->db->from('jobshare_jobs jj');
+        $this->db->join('jobshare_jobqualification jq', 'jj.quals_id = jq.id');
+        $this->db->join('jobshare_jobcategory jc', 'jj.cat_id = jc.id');
+        $this->db->join('jobshare_joblocation jl', 'jj.joblloc_id = jl.id');
+        $query = $this->db->get();
+        return $query->result();
     }
 
     function checkQualification($qual) {
@@ -59,6 +65,20 @@ class AdminJobModel extends CI_Model {
             $data = "";
             return $data;
         }
+    }
+
+    function updateQuals($value, $id) {
+        $data = array(
+            'quals_name' => $value,
+        );
+        $this->db->where('id', $id);
+        $this->db->update('jobshare_jobqualification', $data);
+    }
+    
+     function deleteQualification($id) {
+        
+        $this->db->where('id', $id);
+        $this->db->delete('jobshare_jobqualification');
     }
 
 }
