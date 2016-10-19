@@ -52,7 +52,7 @@
                 </div>
 
                 <!--logo start-->
-                <a href="index.html" class="logo">JobShare <span class="lite">Admin</span></a>
+                <a href="<?php echo base_url('JobController/index'); ?>" class="logo">JobShare <span class="lite">Admin</span></a>
                 <!--logo end-->
 
                 <div class="nav search-row" id="top_menu">
@@ -84,7 +84,7 @@
                         <li class="dropdown">
                             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                                 <span class="profile-ava">
-                                    <img alt="" src="img/avatar1_small.jpg">
+                                    <img alt="" src="<?php echo base_url(); ?>assets/img/avatar1_small.jpg">
                                 </span>
                                 <span class="username">Divin</span>
                                 <b class="caret"></b>

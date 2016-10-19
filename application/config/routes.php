@@ -37,7 +37,7 @@
 | in the URL cannot be matched to a valid route.
 |
 */
-
+$route['(admin/:any)'] = 'welcome/admin';
 $route['default_controller'] = "welcome";
 $route['upload'] = 'Upload';
 $route['404_override'] = '';

@@ -89,15 +89,17 @@
 
     function loginProcess() {
 
-            $.ajax({
-                type: "POST",
-                url: '<?php echo base_url('LoginController/login'); ?>',
-                data: {'username': $("#user").val(),'password':$('#pwd').val(),'role':'admin'},
-                async: false,
-                dataType: 'json',
-                success: function (data) {
-                   alert(data);
+        $.ajax({
+            type: "POST",
+            url: '<?php echo base_url('LoginController/login'); ?>',
+            data: {'username': $("#user").val(), 'password': $('#pwd').val(), 'role': 'admin'},
+            async: false,
+            dataType: 'json',
+            success: function (data) {
+                if (data == 'admin') {
+                   window.location.href ="<?php echo  base_url('JobController/index'); ?>";
                 }
-            });
+            }
+        });
     }
 </script>

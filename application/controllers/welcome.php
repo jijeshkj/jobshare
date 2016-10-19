@@ -17,10 +17,17 @@ class Welcome extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see http://codeigniter.com/user_guide/general/urls.html
 	 */
-	public function index()
+	public function admin()
 	{
 		//$this->load->view('NiceAdmin/header');
 		$this->load->view('NiceAdmin/login');
+		//$this->load->view('NiceAdmin/footer');
+	}
+        
+        public function index()
+	{
+		//$this->load->view('NiceAdmin/header');
+		$this->load->view('jobshare/index');
 		//$this->load->view('NiceAdmin/footer');
 	}
 }
