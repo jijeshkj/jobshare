@@ -19,9 +19,10 @@
 
     <script src="<?php echo base_url('assets/js/jquery-ui-1.10.4.min.js'); ?>"></script>
     <script src="<?php echo base_url(); ?>/assets/js1/bootstrap.min.js"></script>
-    
-    
-    <script src="<?php echo base_url('assets/js/autocomplete/jquery-1.12.4.js');?>"></script>
-  <script src="<?php echo base_url('assets/js/autocomplete/jquery-ui.js');?>"></script>
- 
-  <link rel="stylesheet" href="<?php echo base_url('assets/css/autocomplete/jquery-ui.css');?>">
+
+
+    <script src="<?php echo base_url('assets/js/autocomplete/jquery-1.12.4.js'); ?>"></script>
+    <script src="<?php echo base_url('assets/js/autocomplete/jquery-ui.js'); ?>"></script>
+
+
+    <link rel="stylesheet" href="<?php echo base_url('assets/css/autocomplete/jquery-ui.css'); ?>">

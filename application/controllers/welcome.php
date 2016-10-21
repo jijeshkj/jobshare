@@ -20,8 +20,16 @@ class Welcome extends CI_Controller {
 
     public function index() {
         $this->load->view('jobshare/header');
-        $data['category'] = $this->model->getCategory();
-        $this->load->view('jobshare/index',$data);
+        $data = $this->model->getCategory();
+        foreach ($data as $value) {
+            $pass[] = array('id' => $value->id, 'name' => $value->category_name);
+        }
+        $locations = $this->model->viewLocation();
+        foreach ($locations as $values) {
+            $passloc[] = array('id' => $values->id, 'name' => $values->location_name);
+        }
+        $this->load->view('jobshare/index', array('value' => $pass,'location'=>$passloc));
+
         //$this->load->view('NiceAdmin/footer');
     }
 
