@@ -28,7 +28,11 @@ class Welcome extends CI_Controller {
         foreach ($locations as $values) {
             $passloc[] = array('id' => $values->id, 'name' => $values->location_name);
         }
-        $this->load->view('jobshare/index', array('value' => $pass,'location'=>$passloc));
+        $jobtitles = $this->model->jobtitles();
+        foreach ($jobtitles as $records) {
+            $jobsdata[] = array('title' => $records->job_title, 'company' => $records->company_name);
+        }
+        $this->load->view('jobshare/index', array('value' => $pass, 'location' => $passloc,'jobs'=>$jobsdata));
 
         //$this->load->view('NiceAdmin/footer');
     }

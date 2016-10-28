@@ -34,7 +34,8 @@
             </div>
             <div class="col-lg-4">
                 <label class="caption" style="color: #006699">what</label>
-                <input type="text" id="tags" class="form-control">    
+                <input type="text" id="tags" class="form-control">  
+                job title,category, keywords or company name
             </div>
             <div class="col-lg-4">
                 <label class="caption"  style="color: #006699">where</label>
@@ -42,7 +43,7 @@
             </div>
             <div class="col-lg-2">
                 <label class="caption">&nbsp;</label>
-                <button type="button" class="form-control btn-primary" >Job Search</button>
+                <button type="button" class="form-control btn-primary" onclick="return searchJob()" >Job Search</button>
             </div>
 
         </div>
@@ -59,6 +60,9 @@
 
 </body>
 </html>
+<style>
+    .ui-autocomplete { height: 200px; overflow-y: scroll; overflow-x: hidden;}
+</style>
 
 <script>
     $(function () {
@@ -75,40 +79,69 @@
         for (var i = 0; i < lenloc; i++) {
             var loc = datalolc[i]['name'];
             locarray.push(loc);
+        }
 
+        var jobs =<?php echo json_encode($jobs); ?>;
+        var jobloc = jobs.length;
+
+        for (var i = 0; i < jobloc; i++) {
+            var jobtitle = jobs[i]['title'];
+            var company = jobs[i]['company'];
+            catarray.push(jobtitle);
+            catarray.push(company);
         }
 
         $("#tags").autocomplete({
             minLength: 0,
+            maxLength: 10,
             source: catarray,
             select: function (e, ui) {
 
-                alert("selected!");
+              
             },
             change: function (e, ui) {
 
-                alert("changed!");
+               
             }
         });
-        $("#tags").focus(function () {
-            $(this).autocomplete("search");
-        });
+//        $("#tags").focus(function () {
+//            $(this).autocomplete("search");
+//        });
 
         $("#where").autocomplete({
             minLength: 0,
             source: locarray,
             select: function (e, ui) {
 
-                alert("selected!");
+              
             },
             change: function (e, ui) {
 
-                alert("changed!");
+               
             }
         });
         $("#where").focus(function () {
             $(this).autocomplete("search");
         });
+
+        function searchJob(id, name, rowID) {
+            $.ajax({
+                type: "POST",
+                url: '<?php echo base_url('Controller/searchJob'); ?>',
+                data: {'qualification': name, 'id': id},
+                'success'
+                        : function (data) {
+                            window.location.reload();
+                        },
+                'error': function (data) {
+                }
+            });
+
+        }
+
+
+
+
 
     });
 </script>

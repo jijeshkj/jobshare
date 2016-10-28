@@ -54,6 +54,12 @@ class AdminJobModel extends CI_Model {
         $query = $this->db->get();
         return $query->result();
     }
+    function jobtitles() {
+        $this->db->select('job_title,company_name');
+        $this->db->from('jobshare_jobs');
+        $query = $this->db->get();
+        return $query->result();
+    }
 
     function checkQualification($qual) {
         $this->db->where('quals_name', $qual);
